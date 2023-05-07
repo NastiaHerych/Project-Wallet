@@ -1,0 +1,20 @@
+.form-container {
+  display: block;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: 60px;
+  background: $white;
+  box-shadow: none;
+  padding: 40px;
+  border-radius: 16px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.form {
+  &__button {
+    padding: 10px 0 20px 0;
+  }
+}

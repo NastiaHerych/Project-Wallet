@@ -1,0 +1,41 @@
+<div class="form-container mat-elevation-z5">
+  <h1 class="text text-form__title">Login</h1>
+  <form [formGroup]="loginForm" >
+    <mat-form-field class="mt-10">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        placeholder="Email address"
+        formControlName="email"
+      />
+      <mat-error *ngIf="email?.errors?.['required']">
+        Email address is required
+      </mat-error>
+      <mat-error *ngIf="email?.errors?.['email']">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="mt-10">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <mat-error *ngIf="password?.errors?.['required']">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+    <div class="form__button df-center">
+      <button type="submit" mat-raised-button color="primary">Login</button>
+    </div>
+    <span class="df-center"
+      >New to our platform?
+      <a class="ml-5" routerLink="/sign-up"
+        > Sign up!</a
+      ></span
+    >
+  </form>
+</div>
