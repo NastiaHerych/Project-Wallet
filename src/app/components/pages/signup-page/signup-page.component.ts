@@ -31,6 +31,8 @@ export class SignupPageComponent {
     { validators: passwordsMatchValidator() }
   );
 
+  onSubmit() {}
+
   get email() {
     return this.signUpForm.get("email");
   }

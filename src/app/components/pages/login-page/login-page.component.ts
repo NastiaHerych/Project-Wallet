@@ -19,4 +19,8 @@ export class LoginPageComponent {
   get password() {
     return this.loginForm.get("password");
   }
+
+  onSubmit(){
+    
+  }
 }

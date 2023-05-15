@@ -1,0 +1,42 @@
+<div class="wrapper wrapper-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Bank</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Value</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of transactionList; let i = index">
+            <td>{{ transaction.bank }}</td>
+            <td>{{ transaction.date }}</td>
+            <td>{{ transaction.type }}</td>
+            <td>{{ transaction.value }}</td>
+            <td>{{ transaction.category }}</td>
+            <td>{{ transaction.description }}</td>
+            <td class="table__buttons">
+              <button
+                type="button"
+                class="button button-small"
+                (click)="deleteTransaction(transaction)"
+              >
+                Delete
+              </button>
+
+              <button
+                type="button"
+                class="button button-small"
+                
+              >
+                Update
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>

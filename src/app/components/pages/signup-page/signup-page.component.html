@@ -1,6 +1,6 @@
 <div class="form-container mat-elevation-z5">
   <h1 class="text text-form__title">Sign Up</h1>
-  <form [formGroup]="signUpForm">
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="mt-10" style="background-color: white;">
       <mat-label>Name</mat-label>
       <input matInput placeholder="Name" formControlName="name" />

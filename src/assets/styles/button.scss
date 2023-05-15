@@ -1,0 +1,63 @@
+.button {
+  border-radius: 15px;
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 300;
+  padding: 8px 30px;
+  border: none;
+  color: $white;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &-primary {
+    background: $purple;
+    border: 1px solid $purple;
+
+    &:hover {
+      background: $white;
+      color: $purple;
+    }
+  }
+
+  &-secondary {
+    background: $black;
+    border: 1px solid $black;
+
+    &:hover {
+      background: $white;
+      color: $black;
+    }
+  }
+
+  &-small {
+    background: $pink;
+    font-size: 16px;
+    padding: 7px 16px;
+    border: 1px solid $pink;
+
+    &:hover {
+      background: $white;
+      color: $pink;
+    }
+  }
+  
+  &-modal{
+    border-radius: 15px;
+    font-size: 14px;
+    padding: 8px 22px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: $purple;
+    border: 1px solid $purple;
+  }
+
+  &-modal-danger{
+    border-radius: 15px;
+    font-size: 14px;
+    padding: 8px 22px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: $red;
+    border: 1px solid $red;
+  }
+}

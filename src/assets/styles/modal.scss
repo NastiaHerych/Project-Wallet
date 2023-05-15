@@ -1,0 +1,27 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.modal__title {
+  font-style: normal;
+  font-size: 24px;
+  color: $purple;
+  font-weight: 400;
+}
+
+.modal__content {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}

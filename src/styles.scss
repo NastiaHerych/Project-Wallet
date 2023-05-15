@@ -4,7 +4,8 @@
 @import "./assets/styles/text";
 @import "./assets/styles/form";
 @import "./assets/styles/general";
-
+@import "./assets/styles/button";
+@import "./assets/styles/modal";
 
 * {
   font-family: "Poppins", sans-serif;
@@ -25,4 +26,8 @@ a {
 
 .purple-icon {
   color: $purple;
+}
+
+mat-form-field {
+  width: 100%;
 }

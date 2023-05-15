@@ -1,0 +1,52 @@
+<div class="modal">
+  <h2 class="modal__title">Add outcome</h2>
+  <div mat-dialog-content class="modal__content">
+    <mat-form-field appearance="fill">
+      <mat-label>Value</mat-label>
+      <input matInput [(ngModel)]="transactionObj.value" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Bank name</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let bank of bankOptions" [value]="bank.value">
+          {{ bank.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <input matInput [(ngModel)]="transactionObj.category" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input
+        matInput
+        [(ngModel)]="transactionObj.date"
+        [matDatepicker]="picker"
+        name="date"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="transactionObj.description" />
+    </mat-form-field>
+  </div>
+  <div class="modal__buttons">
+    <button
+      type="button"
+      class="button button-modal-danger"
+      (click)="onNoClick()"
+    >
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="button button-modal"
+      (click)="addTransaction()"
+    >
+      Add
+    </button>
+  </div>
+</div>
