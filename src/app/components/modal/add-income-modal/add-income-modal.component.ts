@@ -8,6 +8,7 @@ import {
 } from "src/app/shared/models/transaction.model";
 import { DatePipe } from "@angular/common";
 import { TransactionServiceService } from "src/app/shared/services/transaction-service.service";
+import { HttpClient } from "@angular/common/http";
 
 interface Bank {
   value: BankType;
@@ -22,19 +23,29 @@ interface Bank {
 })
 export class AddIncomeModalComponent {
   selectedBank: BankType = BankType.MONO;
+  userID: string = "";
+
+  ngOnInit() {
+    const user = localStorage.getItem("user");
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      this.userID = parsedUser._id;
+    }
+  }
 
   transactionObj = {
-    category: "",
+    userId: this.userID,
     value: null,
-    userId: "",
-    bank: this.selectedBank,
-    date: "",
-    description: "",
+    category: "",
     type: TransactionType.INCOME,
+    date: "",
+    bank: this.selectedBank,
+    description: "",
   };
 
   constructor(
     private transactionService: TransactionServiceService,
+    private http: HttpClient,
     public snackBar: MatSnackBar,
     private datePipe: DatePipe,
     public dialogRef: MatDialogRef<AddIncomeModalComponent>,
@@ -61,8 +72,23 @@ export class AddIncomeModalComponent {
 
   addTransaction() {
     this.transactionObj.date = this.datePipe.transform(new Date(), "shortDate");
+    this.transactionObj.userId = this.userID;
+
+    const url = "http://localhost:3000/post/transaction";
     console.log(this.transactionObj);
-    this.transactionService.addTransaction(this.transactionObj)
+    
+    const data = this.transactionObj;
+
+    this.http.post(url, data).subscribe(
+      (response) => {
+        console.log("Response:", response);
+      },
+      (error) => {
+        console.error("Error:", error);
+      }
+    );
+    console.log(this.transactionObj);
+    this.transactionService.addTransaction(this.transactionObj);
     this.openSnackBar("added successfully", "ok");
     this.dialogRef.close();
   }

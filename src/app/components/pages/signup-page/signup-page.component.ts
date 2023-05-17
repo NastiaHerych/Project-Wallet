@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import {
   AbstractControl,
@@ -7,6 +8,7 @@ import {
   ValidatorFn,
   Validators,
 } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-signup-page",
@@ -14,6 +16,8 @@ import {
   styleUrls: ["./signup-page.component.scss"],
 })
 export class SignupPageComponent {
+  constructor(private http: HttpClient, private router: Router) {}
+
   passwordValidate = new RegExp(
     "^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$"
   );
@@ -31,8 +35,6 @@ export class SignupPageComponent {
     { validators: passwordsMatchValidator() }
   );
 
-  onSubmit() {}
-
   get email() {
     return this.signUpForm.get("email");
   }
@@ -47,6 +49,21 @@ export class SignupPageComponent {
 
   get name() {
     return this.signUpForm.get("name");
+  }
+
+  signup() {
+    const url = "http://localhost:3000/post/user";
+    const data = this.signUpForm.value;
+
+    this.http.post(url, data).subscribe(
+      (response) => {
+        console.log("Response:", response);
+        this.router.navigate(["/login"]);
+      },
+      (error) => {
+        console.error("Error:", error);
+      }
+    );
   }
 }
 

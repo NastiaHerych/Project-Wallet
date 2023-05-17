@@ -1,6 +1,6 @@
 <div class="form-container mat-elevation-z5">
   <h1 class="text text-form__title">Login</h1>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
     <mat-form-field class="mt-10">
       <mat-label>Email</mat-label>
       <input
@@ -28,14 +28,13 @@
         Password is required
       </mat-error>
     </mat-form-field>
+    <mat-error *ngIf="responseError">{{ responseError }}</mat-error>
     <div class="form__button df-center">
       <button type="submit" mat-raised-button color="primary">Login</button>
     </div>
     <span class="df-center"
       >New to our platform?
-      <a class="ml-5" routerLink="/sign-up"
-        > Sign up!</a
-      ></span
+      <a class="ml-5" routerLink="/signup"> Sign up!</a></span
     >
   </form>
 </div>
