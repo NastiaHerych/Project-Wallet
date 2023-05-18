@@ -1,7 +1,9 @@
 import { Component } from "@angular/core";
 import { AddIncomeModalComponent } from "../../modal/add-income-modal/add-income-modal.component";
 import { MatDialog } from "@angular/material/dialog";
+import { ViewChild } from "@angular/core";
 import { AddOutcomeModalComponent } from "../../modal/add-outcome-modal/add-outcome-modal.component";
+import { TransactionTableComponent } from "../../tables/transaction-table/transaction-table.component";
 
 @Component({
   selector: "app-home-page",
@@ -9,6 +11,8 @@ import { AddOutcomeModalComponent } from "../../modal/add-outcome-modal/add-outc
   styleUrls: ["./home-page.component.scss"],
 })
 export class HomePageComponent {
+  @ViewChild(TransactionTableComponent)
+  transactionTable: TransactionTableComponent;
   constructor(public dialog: MatDialog) {}
 
   openIncomeModal() {

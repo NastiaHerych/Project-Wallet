@@ -1,0 +1,34 @@
+<div class="navigation">
+  <nav class="wrapper wrapper-navigation">
+    <ul class="navigation__list">
+      <li [ngClass]="{ active: activeRoute === '/' }">
+        <mat-icon class="purple-icon">home</mat-icon>
+        <a class="text text-nav" routerLink="/"> Home</a>
+      </li>
+      <li>
+        <mat-icon class="purple-icon">bar_chart</mat-icon>
+        <a class="text text-nav" routerLink="/"> Statistics</a>
+      </li>
+      <li>
+        <mat-icon class="purple-icon">compare_arrows</mat-icon>
+        <a class="text text-nav" routerLink="/exchange-rate">Exchange Rate</a>
+      </li>
+      <li>
+        <mat-icon class="purple-icon">attach_money</mat-icon>
+        <a class="text text-nav" routerLink="/"> Moneybox</a>
+      </li>
+      <li>
+        <mat-icon class="purple-icon">person</mat-icon>
+        <a class="text text-nav" routerLink="/user-info"> User Info</a>
+      </li>
+      <li>
+        <mat-icon class="purple-icon">settings</mat-icon>
+        <a class="text text-nav" routerLink="/settings"> Settings</a>
+      </li>
+      <li>
+        <mat-icon class="purple-icon">mail</mat-icon>
+        <a class="text text-nav" routerLink="/contact-us"> Contact Us</a>
+      </li>
+    </ul>
+  </nav>
+</div>

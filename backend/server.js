@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 const port = 3000;
 app.use(express.json());
+const { ObjectId } = require("mongodb");
 
 var cors = require("cors");
 app.use(cors());
 
 const { MongoClient, ServerApiVersion } = require("mongodb");
-
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -76,6 +76,45 @@ app.post("/post/transaction", async (req, res) => {
       success: true,
       message: "POST request successful. User ID: " + result.insertedId,
     });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "An error occurred" });
+  }
+});
+
+app.get("/get/transactions", async (req, res) => {
+  try {
+    const { userId } = req.query;
+    const transactionsColl = myDB.collection("transactions");
+    const findResult = await transactionsColl
+      .find({ userId: userId })
+      .toArray();
+    res
+      .status(200)
+      .json({ success: true, message: "GET request successful", findResult });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "An error occurred" });
+  }
+});
+
+var ObjectID = require("mongodb").ObjectId;
+
+app.delete("/delete/transactions/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const transactionsColl = myDB.collection("transactions");
+    const deleteResult = await transactionsColl.deleteOne({
+      _id: new ObjectID(id),
+    });
+
+    if (deleteResult.deletedCount === 1) {
+      res
+        .status(200)
+        .json({ success: true, message: "Transaction deleted successfully" });
+    } else {
+      res
+        .status(404)
+        .json({ success: false, message: "Transaction not found" });
+    }
   } catch (error) {
     res.status(500).json({ success: false, message: "An error occurred" });
   }

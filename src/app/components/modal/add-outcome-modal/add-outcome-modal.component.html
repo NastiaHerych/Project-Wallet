@@ -7,7 +7,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Bank name</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="selectedBank" (ngModelChange)="onBankSelect()">
         <mat-option *ngFor="let bank of bankOptions" [value]="bank.value">
           {{ bank.viewValue }}
         </mat-option>
@@ -34,11 +34,7 @@
     </mat-form-field>
   </div>
   <div class="modal__buttons">
-    <button
-      type="button"
-      class="button button-modal-danger"
-      (click)="onNoClick()"
-    >
+    <button type="button" class="button button-modal-danger" (click)="cancel()">
       Cancel
     </button>
     <button

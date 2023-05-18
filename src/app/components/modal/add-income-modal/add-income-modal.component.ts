@@ -9,6 +9,7 @@ import {
 import { DatePipe } from "@angular/common";
 import { TransactionServiceService } from "src/app/shared/services/transaction-service.service";
 import { HttpClient } from "@angular/common/http";
+import { TransactionUpdateService } from "src/app/shared/services/transaction-update.service";
 
 interface Bank {
   value: BankType;
@@ -22,7 +23,7 @@ interface Bank {
   providers: [DatePipe],
 })
 export class AddIncomeModalComponent {
-  selectedBank: BankType = BankType.MONO;
+  selectedBank: string | null = null;
   userID: string = "";
 
   ngOnInit() {
@@ -45,6 +46,7 @@ export class AddIncomeModalComponent {
 
   constructor(
     private transactionService: TransactionServiceService,
+    private transactionUpdateService: TransactionUpdateService,
     private http: HttpClient,
     public snackBar: MatSnackBar,
     private datePipe: DatePipe,
@@ -60,8 +62,13 @@ export class AddIncomeModalComponent {
     { value: BankType.ALPHA, viewValue: "Alpha bank" },
   ];
 
-  onNoClick(): void {
+  onBankSelect() {
+    this.transactionObj.bank = this.selectedBank;
+  }
+
+  cancel(): void {
     this.dialogRef.close();
+    this.openSnackBar("canceled", "ok");
   }
 
   openSnackBar(message: string, action: string) {
@@ -71,25 +78,27 @@ export class AddIncomeModalComponent {
   }
 
   addTransaction() {
-    this.transactionObj.date = this.datePipe.transform(new Date(), "shortDate");
+    this.transactionObj.date = this.datePipe.transform(
+      this.transactionObj.date,
+      "shortDate"
+    );
     this.transactionObj.userId = this.userID;
 
     const url = "http://localhost:3000/post/transaction";
-    console.log(this.transactionObj);
-    
     const data = this.transactionObj;
 
     this.http.post(url, data).subscribe(
       (response) => {
-        console.log("Response:", response);
+        this.openSnackBar("added successfully", "ok");
+        this.transactionUpdateService.transactionAdded.emit(
+          this.transactionObj
+        );
       },
       (error) => {
         console.error("Error:", error);
+        this.openSnackBar("error occured while adding transaction", "ok");
       }
     );
-    console.log(this.transactionObj);
-    this.transactionService.addTransaction(this.transactionObj);
-    this.openSnackBar("added successfully", "ok");
     this.dialogRef.close();
   }
 }

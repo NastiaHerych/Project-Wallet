@@ -1,0 +1,25 @@
+.navigation {
+  margin-top: 20px;
+}
+
+.navigation__list {
+  max-width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  li {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 2px;
+
+    &:hover {
+      text-shadow: #765bbb 2px 0 10px;
+    }
+  }
+}
+
+.navigation__list li.active {
+  text-shadow: #765bbb 2px 0 10px;
+}

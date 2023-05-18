@@ -1,13 +1,27 @@
 <app-header></app-header>
 <div class="main">
   <div class="main__left">
-    <!-- <app-navigation-menu></app-navigation-menu> -->
+    <app-navigation-menu></app-navigation-menu>
   </div>
   <div class="main__right">
     <div class="main__buttons">
-      <button type="button" class="button button-primary" (click)="openIncomeModal()">Add income</button>
-      <button type="button" class="button button-secondary" (click)="openOutcomeModal()">Add outcome</button>
+      <button
+        type="button"
+        class="button button-primary"
+        (click)="openIncomeModal()"
+      >
+        Add income
+      </button>
+      <button
+        type="button"
+        class="button button-secondary"
+        (click)="openOutcomeModal()"
+      >
+        Add outcome
+      </button>
     </div>
-    <app-transaction-table></app-transaction-table>
+    <app-transaction-table
+      (transactionAdded)="transactionTable.addTransactionToList($event)"
+    ></app-transaction-table>
   </div>
 </div>

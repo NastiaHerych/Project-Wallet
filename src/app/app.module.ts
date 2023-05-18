@@ -13,7 +13,6 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MatSelectModule } from "@angular/material/select";
 import { HttpClientModule } from "@angular/common/http";
 
-
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomePageComponent } from "./components/pages/home-page/home-page.component";
@@ -24,7 +23,8 @@ import { SignupPageComponent } from "./components/pages/signup-page/signup-page.
 import { TransactionTableComponent } from "./components/tables/transaction-table/transaction-table.component";
 import { AddIncomeModalComponent } from "./components/modal/add-income-modal/add-income-modal.component";
 import { AddOutcomeModalComponent } from "./components/modal/add-outcome-modal/add-outcome-modal.component";
-import { AuthGuard } from './shared/guards/auth.guard';
+import { AuthGuard } from "./shared/guards/auth.guard";
+import { NavigationMenuComponent } from "./components/navigation-menu/navigation-menu.component";
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
     TransactionTableComponent,
     AddIncomeModalComponent,
     AddOutcomeModalComponent,
+    NavigationMenuComponent,
   ],
   imports: [
     BrowserModule,
