@@ -25,6 +25,8 @@ import { AddIncomeModalComponent } from "./components/modal/add-income-modal/add
 import { AddOutcomeModalComponent } from "./components/modal/add-outcome-modal/add-outcome-modal.component";
 import { AuthGuard } from "./shared/guards/auth.guard";
 import { NavigationMenuComponent } from "./components/navigation-menu/navigation-menu.component";
+import { DeleteModalComponent } from "./components/modal/delete-modal/delete-modal.component";
+import { EditModalComponent } from "./components/modal/edit-modal/edit-modal.component";
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { NavigationMenuComponent } from "./components/navigation-menu/navigation
     AddIncomeModalComponent,
     AddOutcomeModalComponent,
     NavigationMenuComponent,
+    DeleteModalComponent,
+    EditModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,5 +6,7 @@ import { EventEmitter, Injectable } from "@angular/core";
 export class TransactionUpdateService {
   transactionAdded: EventEmitter<any> = new EventEmitter<any>();
 
+  transactionUpdated: EventEmitter<any> = new EventEmitter<any>();
+
   constructor() {}
 }

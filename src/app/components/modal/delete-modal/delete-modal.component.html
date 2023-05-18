@@ -1,0 +1,25 @@
+<div class="modal-delete">
+  <h5>Are You Sure?</h5>
+  <mat-dialog-content>
+    <p>{{ message }}</p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button
+      type="button"
+      class="button button-modal-danger"
+      mat-dialog-close
+      tabindex="-1"
+    >
+      {{ cancelButtonText }}
+    </button>
+    <button
+      type="button"
+      class="button button-modal"
+      color="primary"
+      (click)="onConfirmClick()"
+      tabindex="1"
+    >
+      {{ confirmButtonText }}
+    </button>
+  </mat-dialog-actions>
+</div>

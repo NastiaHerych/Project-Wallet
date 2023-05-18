@@ -5,11 +5,19 @@ export class TransactionModel {
   value: number;
   date: string;
   bank: BankType;
-  description : string;
-  id?: string;
+  description: string;
+  _id: string;
 
-  constructor(userId: string, category: string, type: TransactionType, value: number, 
-    date: string, bank: BankType, description: string , id?: string){
+  constructor(
+    userId: string,
+    category: string,
+    type: TransactionType,
+    value: number,
+    date: string,
+    bank: BankType,
+    description: string,
+    _id: string
+  ) {
     this.userId = userId;
     this.category = category;
     this.type = type;
@@ -17,7 +25,7 @@ export class TransactionModel {
     this.date = date;
     this.bank = bank;
     this.description = description;
-    this.id = id;
+    this._id = _id;
   }
 }
 

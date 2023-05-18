@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const port = 3000;
 app.use(express.json());
-const { ObjectId } = require("mongodb");
 
 var cors = require("cors");
 app.use(cors());
@@ -110,6 +109,41 @@ app.delete("/delete/transactions/:id", async (req, res) => {
       res
         .status(200)
         .json({ success: true, message: "Transaction deleted successfully" });
+    } else {
+      res
+        .status(404)
+        .json({ success: false, message: "Transaction not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: "An error occurred" });
+  }
+});
+
+app.put("/update/transaction/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { userId, value, category, type, date, bank, description } = req.body;
+
+    const transactionsColl = myDB.collection("transactions");
+    const updateResult = await transactionsColl.updateOne(
+      { _id: new ObjectID(id) },
+      {
+        $set: {
+          userId: userId,
+          value: value,
+          category: category,
+          type: type,
+          date: date,
+          bank: bank,
+          description: description,
+        },
+      }
+    );
+
+    if (updateResult.modifiedCount === 1) {
+      res
+        .status(200)
+        .json({ success: true, message: "Transaction updated successfully" });
     } else {
       res
         .status(404)
