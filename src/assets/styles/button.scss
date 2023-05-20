@@ -60,4 +60,11 @@
     background: $red;
     border: 1px solid $red;
   }
+
+  &-balance{
+    align-self: flex-end;
+    background: none;
+    padding: 0;
+    display: none;
+  }
 }

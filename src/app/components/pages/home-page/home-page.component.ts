@@ -4,6 +4,8 @@ import { MatDialog } from "@angular/material/dialog";
 import { ViewChild } from "@angular/core";
 import { AddOutcomeModalComponent } from "../../modal/add-outcome-modal/add-outcome-modal.component";
 import { TransactionTableComponent } from "../../tables/transaction-table/transaction-table.component";
+import { MonobankAPIService } from "src/app/shared/services/monobank-api.service";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-home-page",

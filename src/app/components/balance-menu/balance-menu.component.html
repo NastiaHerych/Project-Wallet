@@ -1,0 +1,16 @@
+<div class="balance">
+  <div class="wrapper wrapper-balance">
+    <p class="text text-balance__title">Your balance</p>
+    <button (click)="toggleBalance()" class="flag-button">
+      <mat-icon *ngIf="!showBalance" class="flag-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="38">
+          <rect width="50" height="17" fill="#005BBB" />
+          <rect width="50" height="17" y="17" fill="#FFD500" />
+        </svg>
+      </mat-icon>
+      <div class="text text-balance" *ngIf="showBalance">
+        {{ formattedBalance }} UAH
+      </div>
+    </button>
+  </div>
+</div>

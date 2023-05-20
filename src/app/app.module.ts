@@ -27,6 +27,7 @@ import { AuthGuard } from "./shared/guards/auth.guard";
 import { NavigationMenuComponent } from "./components/navigation-menu/navigation-menu.component";
 import { DeleteModalComponent } from "./components/modal/delete-modal/delete-modal.component";
 import { EditModalComponent } from "./components/modal/edit-modal/edit-modal.component";
+import { BalanceMenuComponent } from './components/balance-menu/balance-menu.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { EditModalComponent } from "./components/modal/edit-modal/edit-modal.com
     NavigationMenuComponent,
     DeleteModalComponent,
     EditModalComponent,
+    BalanceMenuComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+.flag-button {
+  display: flex;
+  align-self: end;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.flag-icon {
+  padding-left: 10px;
+  display: flex;
+  align-self: end;
+  width: 100px;
+  height: 38px;
+}

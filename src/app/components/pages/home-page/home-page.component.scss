@@ -5,7 +5,10 @@
   grid-template-columns: 24% 76%;
 
   &__left {
+    display: flex;
+    flex-direction: column;
     justify-self: start;
+    gap: 20px;
   }
 
   &__right {
