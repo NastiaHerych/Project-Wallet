@@ -1,0 +1,41 @@
+<div class="modal">
+  <h2 class="modal__title">Add other bank balances</h2>
+  <div mat-dialog-content class="modal__content">
+    <div
+      *ngFor="let bank of bankBalances; let i = index"
+      class="bank-balance-row"
+    >
+      <mat-form-field appearance="fill">
+        <mat-label>Bank</mat-label>
+        <mat-select [(ngModel)]="bank.bankName">
+          <mat-option
+            *ngFor="let bankOption of bankOptions"
+            [value]="bankOption.value"
+          >
+            {{ bankOption.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Amount</mat-label>
+        <input matInput [(ngModel)]="bank.amount" />
+      </mat-form-field>
+      <button
+        type="button"
+        class="button button-modal-x"
+        (click)="removeBalance(i)"
+        style="align-self: flex-end"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="modal__buttons">
+    <button type="button" class="button button-modal" (click)="addBalance()">
+      Add
+    </button>
+    <button type="button" class="button button-modal" (click)="finish()">
+      Finish
+    </button>
+  </div>
+</div>

@@ -14,6 +14,7 @@ import { EditModalComponent } from "../../modal/edit-modal/edit-modal.component"
 })
 export class TransactionTableComponent implements OnInit {
   transactionList: any[] = [];
+  userID: string = "";
 
   constructor(
     private transactionService: TransactionServiceService,
@@ -22,8 +23,6 @@ export class TransactionTableComponent implements OnInit {
     public dialog: MatDialog,
     public snackBar: MatSnackBar
   ) {}
-
-  userID: string = "";
 
   ngOnInit() {
     const user = localStorage.getItem("user");

@@ -154,6 +154,39 @@ app.put("/update/transaction/:id", async (req, res) => {
   }
 });
 
+//balances
+app.post("/post/balance", async (req, res) => {
+  try {
+    const myColl = myDB.collection("balances");
+    const { userId, balances } = req.body;
+    const balanceObject = {
+      userId: userId,
+      balances: balances,
+    };
+    const result = await myColl.insertOne(balanceObject);
+    res.status(200).json({
+      success: true,
+      message: "POST request successful. User ID: " + result.insertedId,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "An error occurred" });
+  }
+});
+
+app.get("/get/balances", async (req, res) => {
+  try {
+    const { userId } = req.query;
+    const balancesColl = myDB.collection("balances");
+    const findResult = await balancesColl.find({ userId: userId }).toArray();
+    res
+      .status(200)
+      .json({ success: true, message: "GET request successful", findResult });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "An error occurred" });
+  }
+});
+
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

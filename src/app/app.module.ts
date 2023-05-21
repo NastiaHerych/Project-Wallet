@@ -28,6 +28,8 @@ import { NavigationMenuComponent } from "./components/navigation-menu/navigation
 import { DeleteModalComponent } from "./components/modal/delete-modal/delete-modal.component";
 import { EditModalComponent } from "./components/modal/edit-modal/edit-modal.component";
 import { BalanceMenuComponent } from './components/balance-menu/balance-menu.component';
+import { MonobankTokenModalComponent } from './components/modal/monobank-token-modal/monobank-token-modal.component';
+import { OtherBanksModalComponent } from './components/modal/other-banks-modal/other-banks-modal.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { BalanceMenuComponent } from './components/balance-menu/balance-menu.com
     DeleteModalComponent,
     EditModalComponent,
     BalanceMenuComponent,
+    MonobankTokenModalComponent,
+    OtherBanksModalComponent,
   ],
   imports: [
     BrowserModule,

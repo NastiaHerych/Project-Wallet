@@ -22,11 +22,19 @@
   &-balance {
     font-weight: 700;
     font-size: 24px;
+    padding: 10px 0;
+    align-self: flex-end;
   }
 
   &-balance__title {
     font-weight: 500;
     font-size: 18px;
+    color: $purple;
+  }
+
+  &-modal-mono {
+    font-size: 18px;
+    padding: 0 0 15px;
   }
 
   &-link {

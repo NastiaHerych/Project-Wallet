@@ -12,7 +12,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let transaction of transactionList; let i = index">
+      <tr *ngFor="let transaction of transactionList; let i = index"
+       [ngStyle]="{ 'color': transaction.type === 'INCOME' ? 'green' : 'red' }">
         <td>{{ transaction.bank }}</td>
         <td>{{ transaction.date }}</td>
         <td>{{ transaction.type }}</td>
@@ -23,16 +24,16 @@
           <button
             type="button"
             class="button button-small"
-            (click)="deleteTransaction(transaction._id)"
+            (click)="updateTransaction(transaction)"
           >
-            Delete
+            Update
           </button>
           <button
             type="button"
             class="button button-small"
-            (click)="updateTransaction(transaction)"
+            (click)="deleteTransaction(transaction._id)"
           >
-            Update
+            Delete
           </button>
         </td>
       </tr>

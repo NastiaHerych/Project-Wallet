@@ -1,5 +1,8 @@
+import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { MonobankAPIService } from "src/app/shared/services/monobank-api.service";
+import { TransactionUpdateService } from "src/app/shared/services/transaction-update.service";
 
 @Component({
   selector: "app-balance-menu",
@@ -7,23 +10,70 @@ import { MonobankAPIService } from "src/app/shared/services/monobank-api.service
   styleUrls: ["./balance-menu.component.scss"],
 })
 export class BalanceMenuComponent {
-  balance: number;
-  showBalance: boolean = false;
-  formattedBalance: string;
+  balance: number = 0;
+  balanceList: any;
+  userID: string = "";
+  showBalances = false;
+  buttonClicked: boolean = false;
 
-  constructor(private monobankService: MonobankAPIService) {}
+  constructor(
+    private http: HttpClient,
+    public snackBar: MatSnackBar,
+    private transactionUpdateService: TransactionUpdateService
+  ) {}
 
-  formatNumber(number: number): string {
-    const formatted = (number / 100).toFixed(2);
-    return formatted;
+  ngOnInit() {
+    const user = localStorage.getItem("user");
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      this.userID = parsedUser._id;
+    }
   }
 
-  toggleBalance() {
-    const token = "";
-    this.monobankService.getAccountBalance(token).subscribe((response) => {
-      this.balance = response.accounts[0].balance;
-      this.formattedBalance = this.formatNumber(this.balance);
-    });
-    this.showBalance = !this.showBalance;
+  getBalances(userID: string) {
+    const url = `http://localhost:3000/get/balances?userId=${userID}`;
+    this.http.get(url).subscribe(
+      (response: any) => {
+        if (response.findResult.length) {
+          this.balanceList = response.findResult;
+          this.calculateFormattedBalance();
+        } else {
+          this.balanceList = [
+            {
+              _id: "",
+              userId: this.userID,
+              balances: [
+                {
+                  bankName: "",
+                  amount: "",
+                },
+              ],
+            },
+          ];
+        }
+      },
+      (error) => {
+        console.error("Error:", error);
+      }
+    );
+  }
+
+  showBankBalances(): void {
+    this.showBalances = true;
+    this.buttonClicked = true;
+    this.getBalances(this.userID);
+  }
+
+  hideBankBalance(): void {
+    this.showBalances = false;
+    this.buttonClicked = false;
+  }
+
+  calculateFormattedBalance(): void {
+    let sum = 0;
+    for (const balance of this.balanceList[0].balances) {
+      sum += parseInt(balance.amount);
+    }
+    this.balance = sum;
   }
 }

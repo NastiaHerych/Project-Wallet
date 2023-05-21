@@ -40,8 +40,20 @@
       color: $pink;
     }
   }
-  
-  &-modal{
+
+    &-small-danger {
+    background: $red;
+    font-size: 16px;
+    padding: 7px 16px;
+    border: 1px solid $red;
+
+    &:hover {
+      background: $white;
+      color: $red;
+    }
+  }
+
+  &-modal {
     border-radius: 15px;
     font-size: 14px;
     padding: 8px 22px;
@@ -51,7 +63,7 @@
     border: 1px solid $purple;
   }
 
-  &-modal-danger{
+  &-modal-danger {
     border-radius: 15px;
     font-size: 14px;
     padding: 8px 22px;
@@ -61,10 +73,21 @@
     border: 1px solid $red;
   }
 
-  &-balance{
+  &-modal-x {
+    cursor: pointer;
+    transition: all 0.3s;
+    background: $red;
+    border: 1px solid $red;
+    padding: 3px 4px 2px;
+    font-size: 10px;
+    border-radius: 30px;
+  }
+
+  &-balance {
     align-self: flex-end;
-    background: none;
+    background-color: $white;
+    color: $pink;
+    font-size: 15px;
     padding: 0;
-    display: none;
   }
 }

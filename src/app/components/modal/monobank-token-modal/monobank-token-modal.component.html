@@ -1,0 +1,25 @@
+<div class="modal">
+  <h2 class="modal__title">Connect to monobank</h2>
+  <div mat-dialog-content class="modal__content">
+    <p class="text text-modal-mono">
+      To show your balance, please visit the <a href="https://api.monobank.ua/">Monobank site</a> and activate your
+      token.
+    </p>
+    <mat-form-field appearance="fill">
+      <mat-label>Monobank token</mat-label>
+      <input matInput [(ngModel)]="monobankToken" />
+    </mat-form-field>
+  </div>
+  <div class="modal__buttons">
+    <button type="button" class="button button-modal-danger" (click)="cancel()">
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="button button-modal"
+      (click)="connectToMonobank()"
+    >
+      Add
+    </button>
+  </div>
+</div>
