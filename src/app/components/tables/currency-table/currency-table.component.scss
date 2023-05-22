@@ -1,0 +1,28 @@
+table {
+  font-size: 20px;
+  background-color: rgb(167, 167, 251);
+  border-radius: 15px;
+
+  th{
+    text-align: center;
+    padding: 20px 30px;
+    color: white;
+    font-weight: 700;
+  }
+
+  td {
+    text-align: center;
+    padding: 20px 30px;
+    color: white;
+  }
+}
+
+.table-wrapper {
+  padding-top: 20px;
+}
+
+.currencies{
+  display: flex;
+  padding: 20px 0;
+  gap: 20px;
+}

@@ -4,6 +4,7 @@ import { HomePageComponent } from "./components/pages/home-page/home-page.compon
 import { LoginPageComponent } from "./components/pages/login-page/login-page.component";
 import { SignupPageComponent } from "./components/pages/signup-page/signup-page.component";
 import { AuthGuard } from "./shared/guards/auth.guard";
+import { CurrencyPageComponent } from "./components/pages/currency-page/currency-page.component";
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: "signup",
     component: SignupPageComponent,
+  },
+  {
+    path: "currency",
+    component: CurrencyPageComponent,
   },
   { path: "", redirectTo: "home", pathMatch: "full" },
 ];

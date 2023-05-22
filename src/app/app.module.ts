@@ -30,6 +30,8 @@ import { EditModalComponent } from "./components/modal/edit-modal/edit-modal.com
 import { BalanceMenuComponent } from './components/balance-menu/balance-menu.component';
 import { MonobankTokenModalComponent } from './components/modal/monobank-token-modal/monobank-token-modal.component';
 import { OtherBanksModalComponent } from './components/modal/other-banks-modal/other-banks-modal.component';
+import { CurrencyPageComponent } from './components/pages/currency-page/currency-page.component';
+import { CurrencyTableComponent } from './components/tables/currency-table/currency-table.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { OtherBanksModalComponent } from './components/modal/other-banks-modal/o
     BalanceMenuComponent,
     MonobankTokenModalComponent,
     OtherBanksModalComponent,
+    CurrencyPageComponent,
+    CurrencyTableComponent,
   ],
   imports: [
     BrowserModule,

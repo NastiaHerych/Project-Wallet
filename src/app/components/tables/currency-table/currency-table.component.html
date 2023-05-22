@@ -1,0 +1,72 @@
+<h2 class="text text-title">Your balance</h2>
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Bank</th>
+        <th>UAH</th>
+        <th>USD</th>
+        <th>Euro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let item of balanceList">
+        <tr *ngFor="let balance of item.balances">
+          <td>{{ balance.bankName }}</td>
+          <td>{{ balance.amount }}</td>
+          <td>
+            {{
+              calculateAmount(balance.amount, usdExchangeRate)
+                | number : "1.2-2"
+            }}
+          </td>
+          <td>
+            {{
+              calculateAmount(balance.amount, euroExchangeRate)
+                | number : "1.2-2"
+            }}
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <h2 class="text text-title">Exchange Rate</h2>
+  <div class="currencies">
+    <table>
+      <thead>
+        <tr>
+          <th>Currency</th>
+          <th>UAN</th>
+          <th>Purchase</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let currency of currencyList; let i = index">
+          <tr *ngIf="shouldDisplayCurrency(currency.currency) && i < 7">
+            <td>{{ currency.currency }}</td>
+            <td>100</td>
+            <td>{{ currency.purchaseRateNB | number : "1.2-2" }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Currency</th>
+          <th>UAN</th>
+          <th>Purchase</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let currency of currencyList; let i = index">
+          <tr *ngIf="shouldDisplayCurrency(currency.currency) && i > 7">
+            <td>{{ currency.currency }}</td>
+            <td>100</td>
+            <td>{{ currency.purchaseRateNB | number : "1.2-2" }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>

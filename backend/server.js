@@ -1,4 +1,5 @@
 const express = require("express");
+const axios = require("axios");
 const app = express();
 const port = 3000;
 app.use(express.json());
@@ -186,6 +187,46 @@ app.get("/get/balances", async (req, res) => {
   }
 });
 
+app.get("/get/currencies", async (req, res) => {
+  try {
+    const response = await axios.get(
+      "https://api.privatbank.ua/p24api/exchange_rates?date=20.05.2023"
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "GET request successful",
+      data: response.data,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "An error occurred" });
+  }
+});
+
+app.put("/update/balance/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { balances } = req.body;
+    const balancesColl = myDB.collection("balances");
+    const updateResult = await balancesColl.updateOne(
+      { _id: new ObjectID(id) },
+      {
+        $set: {
+          balances: balances,
+        },
+      }
+    );
+    if (updateResult.modifiedCount === 1) {
+      res
+        .status(200)
+        .json({ success: true, message: "Balance updated successfully" });
+    } else {
+      res.status(404).json({ success: false, message: "Balance not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: "An error occurred" });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
