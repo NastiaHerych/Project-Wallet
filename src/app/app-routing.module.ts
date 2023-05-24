@@ -5,6 +5,7 @@ import { LoginPageComponent } from "./components/pages/login-page/login-page.com
 import { SignupPageComponent } from "./components/pages/signup-page/signup-page.component";
 import { AuthGuard } from "./shared/guards/auth.guard";
 import { CurrencyPageComponent } from "./components/pages/currency-page/currency-page.component";
+import { StatisticsPageComponent } from "./components/pages/statistics-page/statistics-page.component";
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: "currency",
     component: CurrencyPageComponent,
+  },
+  {
+    path: "statistics",
+    component: StatisticsPageComponent,
   },
   { path: "", redirectTo: "home", pathMatch: "full" },
 ];

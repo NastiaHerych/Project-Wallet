@@ -1,0 +1,19 @@
+.main {
+  max-width: 1260px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 24% 76%;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    justify-self: start;
+    gap: 20px;
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

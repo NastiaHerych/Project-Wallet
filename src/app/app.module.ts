@@ -11,6 +11,7 @@ import { MatOptionModule } from "@angular/material/core";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatSelectModule } from "@angular/material/select";
+import { NgChartsModule } from "ng2-charts";
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -27,11 +28,13 @@ import { AuthGuard } from "./shared/guards/auth.guard";
 import { NavigationMenuComponent } from "./components/navigation-menu/navigation-menu.component";
 import { DeleteModalComponent } from "./components/modal/delete-modal/delete-modal.component";
 import { EditModalComponent } from "./components/modal/edit-modal/edit-modal.component";
-import { BalanceMenuComponent } from './components/balance-menu/balance-menu.component';
-import { MonobankTokenModalComponent } from './components/modal/monobank-token-modal/monobank-token-modal.component';
-import { OtherBanksModalComponent } from './components/modal/other-banks-modal/other-banks-modal.component';
-import { CurrencyPageComponent } from './components/pages/currency-page/currency-page.component';
-import { CurrencyTableComponent } from './components/tables/currency-table/currency-table.component';
+import { BalanceMenuComponent } from "./components/balance-menu/balance-menu.component";
+import { MonobankTokenModalComponent } from "./components/modal/monobank-token-modal/monobank-token-modal.component";
+import { OtherBanksModalComponent } from "./components/modal/other-banks-modal/other-banks-modal.component";
+import { CurrencyPageComponent } from "./components/pages/currency-page/currency-page.component";
+import { CurrencyTableComponent } from "./components/tables/currency-table/currency-table.component";
+import { StatisticsPageComponent } from "./components/pages/statistics-page/statistics-page.component";
+import { StatisticsComponent } from "./components/statistics/statistics.component";
 
 @NgModule({
   declarations: [
@@ -51,6 +54,8 @@ import { CurrencyTableComponent } from './components/tables/currency-table/curre
     OtherBanksModalComponent,
     CurrencyPageComponent,
     CurrencyTableComponent,
+    StatisticsPageComponent,
+    StatisticsComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +74,7 @@ import { CurrencyTableComponent } from './components/tables/currency-table/curre
     MatNativeDateModule,
     MatSelectModule,
     HttpClientModule,
+    NgChartsModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

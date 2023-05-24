@@ -216,6 +216,7 @@ app.put("/update/balance/:id", async (req, res) => {
         },
       }
     );
+
     if (updateResult.modifiedCount === 1) {
       res
         .status(200)
